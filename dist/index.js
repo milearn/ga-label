@@ -8867,6 +8867,7 @@ const { github, context } = __nccwpck_require__(5438);
   try {
       
     const githubToken = process.env['GITHUB_TOKEN'];
+    core.info(githubToken);
 
     if (!githubToken) {
         core.setFailed("GITHUB_TOKEN does not exist.");

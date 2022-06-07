@@ -5,6 +5,7 @@ const { github, context } = require("@actions/github");
   try {
       
     const githubToken = process.env['GITHUB_TOKEN'];
+    core.info(githubToken);
 
     if (!githubToken) {
         core.setFailed("GITHUB_TOKEN does not exist.");
