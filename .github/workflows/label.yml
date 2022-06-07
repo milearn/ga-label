@@ -5,6 +5,8 @@ on:
       - feat/label-4
       - feat/label-5
       - main
+    push:
+      - feat/label-5
     types:
       - opened
 
