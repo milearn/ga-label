@@ -5,6 +5,9 @@ on:
       - main
     types:
       - opened
+  push:
+    branches:
+      - feat/label-4
 
 jobs:
   add-label:
