@@ -2,8 +2,11 @@ name: 'Add Label'
 description: 'Add a label when someone raise a PR with a given base branch'
 inputs:
   labels:
-    description: "Labels to add"
+    description: "Map of branch to Labels."
     required: true
+  default:
+    description: "if no label found in labels against a branch. default will be applied"
+    required: false
 outputs:
   time: # output will be available to future steps
     description: 'The current time after waiting'

@@ -2,12 +2,13 @@ name: Add Label
 on:
   pull_request:
     branches:
+      - feat/label-4
+      - feat/label-5
       - main
+    push:
+      - feat/label-5
     types:
       - opened
-  push:
-    branches:
-      - feat/label-4
 
 jobs:
   add-label:
@@ -18,7 +19,10 @@ jobs:
       - uses: ./
         with:
           labels: |
-            minor release
+            { feat/label-4: 'label-4, new',
+              feat/label-5: 'label-5'
+            }
+          default: |
             bug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

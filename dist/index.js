@@ -8872,14 +8872,17 @@ const { getOctokit, context } = __nccwpck_require__(5438);
         core.setFailed("GITHUB_TOKEN does not exist.");
         return;
     }
-    console.log(process.env.GITHUB_REF);
-    const octokit = getOctokit(githubToken)
+    const octokit = getOctokit(githubToken);
     const { owner, repo } = context.repo;
-    const labels = core
-      .getInput("labels")
+    const labels = core.getInput('labels');
+    console.log(context.payload.pull_request.base.ref);
+    console.log(labels);
+    
+    const defaultLabels = core
+      .getInput("default")
       .split("\n")
       .filter((x) => x !== "");
-    const issueNumber = context.payload.number;
+    const issueNumber = context.issue.number;
 
     core.info(`Add labels: ${labels} to ${owner}/${repo}#${issueNumber}`);
 
@@ -8887,7 +8890,7 @@ const { getOctokit, context } = __nccwpck_require__(5438);
       owner,
       repo,
       issue_number: issueNumber,
-      labels,
+      labels: defaultLabels,
     });
   } catch (error) {
     core.setFailed(error.message);
