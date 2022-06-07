@@ -8867,16 +8867,14 @@ const { getOctokit, context } = __nccwpck_require__(5438);
   try {
       
     const githubToken = process.env['GITHUB_TOKEN'];
-    core.info(githubToken);
 
     if (!githubToken) {
         core.setFailed("GITHUB_TOKEN does not exist.");
         return;
     }
-    
+    console.log(process.env.GITHUB_REF);
     const octokit = getOctokit(githubToken)
     const { owner, repo } = context.repo;
-    console.log(context.issue);
     const labels = core
       .getInput("labels")
       .split("\n")
