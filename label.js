@@ -1,5 +1,5 @@
 const core = require("@actions/core");
-const { github, context } = require("@actions/github");
+const { getOctokit, context } = require("@actions/github");
 
 (async () => {
   try {
@@ -12,7 +12,7 @@ const { github, context } = require("@actions/github");
         return;
     }
     
-    const octokit = github.getOctokit(githubToken)
+    const octokit = getOctokit(githubToken)
     const { owner, repo } = context.repo;
     const labels = core
       .getInput("labels")
