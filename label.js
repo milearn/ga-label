@@ -17,7 +17,7 @@ const { getOctokit, context } = require("@actions/github");
     console.log(labels);
     
     const defaultLabels = core
-      .getInput("defaultLabels")
+      .getInput("default")
       .split("\n")
       .filter((x) => x !== "");
     const issueNumber = context.issue.number;
