@@ -14,8 +14,7 @@ const { getOctokit, context } = require("@actions/github");
     
     const octokit = getOctokit(githubToken)
     const { owner, repo } = context.repo;
-    console.log(context);
-    core.info(context);
+    console.log(context.issue);
     const labels = core
       .getInput("labels")
       .split("\n")

@@ -8876,8 +8876,7 @@ const { getOctokit, context } = __nccwpck_require__(5438);
     
     const octokit = getOctokit(githubToken)
     const { owner, repo } = context.repo;
-    console.log(context);
-    core.info(context);
+    console.log(context.issue);
     const labels = core
       .getInput("labels")
       .split("\n")
