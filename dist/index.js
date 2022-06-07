@@ -8874,8 +8874,12 @@ const { getOctokit, context } = __nccwpck_require__(5438);
     }
     const octokit = getOctokit(githubToken);
     const { owner, repo } = context.repo;
-    const labels = core
-      .getInput("labels")
+    const labels = core.getInput('labels');
+    console.log(context.payload.pull_request.base.ref);
+    console.log(labels);
+    
+    const defaultLabels = core
+      .getInput("defaultLabels")
       .split("\n")
       .filter((x) => x !== "");
     const issueNumber = context.issue.number;
@@ -8886,7 +8890,7 @@ const { getOctokit, context } = __nccwpck_require__(5438);
       owner,
       repo,
       issue_number: issueNumber,
-      labels,
+      defaultLabels,
     });
   } catch (error) {
     core.setFailed(error.message);
