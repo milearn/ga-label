@@ -22,7 +22,7 @@ const { getOctokit, context } = require("@actions/github");
 
     core.info(`Add labels: ${labels} to ${owner}/${repo}#${issueNumber}`);
 
-    await octokit.issues.addLabels({
+    await octokit.rest.issues.addLabels({
       owner,
       repo,
       issue_number: issueNumber,
