@@ -1,5 +1,5 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Add Label'
+description: 'Add a label when someone raise a PR with a given base branch'
 inputs:
   milliseconds:  # id of input
     description: 'number of milliseconds to wait'
