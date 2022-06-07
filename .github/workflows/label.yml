@@ -1,0 +1,21 @@
+name: Add Label
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+
+jobs:
+  add-label:
+    name: Add Label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          labels: |
+            minor release
+            bug
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
