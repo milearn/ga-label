@@ -1,15 +1,16 @@
 const core = require("@actions/core");
-const { GitHub, context } = require("@actions/github");
+const { github, context } = require("@actions/github");
 
 (async () => {
   try {
-    const githubToken = process.env["GITHUB_TOKEN"];
-    if (!githubToken) {
-      core.setFailed("GITHUB_TOKEN does not exist.");
-      return;
-    }
+    const githubToken = core.getInput('GITHUB_TOKEN');
 
-    const github = new GitHub(githubToken);
+    if (!githubToken) {
+        core.setFailed("GITHUB_TOKEN does not exist.");
+        return;
+    }
+    
+    const octokit = github.getOctokit(githubToken)
     const { owner, repo } = context.repo;
     const labels = core
       .getInput("labels")
@@ -19,7 +20,7 @@ const { GitHub, context } = require("@actions/github");
 
     core.info(`Add labels: ${labels} to ${owner}/${repo}#${issueNumber}`);
 
-    await github.issues.addLabels({
+    await octokit.issues.addLabels({
       owner,
       repo,
       issue_number: issueNumber,
