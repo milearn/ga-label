@@ -10,15 +10,13 @@ const { getOctokit, context } = require("@actions/github");
         core.setFailed("GITHUB_TOKEN does not exist.");
         return;
     }
-    console.log(process.env.GITHUB_REF);
-    console.log(context);
     const octokit = getOctokit(githubToken);
     const { owner, repo } = context.repo;
     const labels = core
       .getInput("labels")
       .split("\n")
       .filter((x) => x !== "");
-    const issueNumber = context.payload.number;
+    const issueNumber = context.issue.number;
 
     core.info(`Add labels: ${labels} to ${owner}/${repo}#${issueNumber}`);
 
