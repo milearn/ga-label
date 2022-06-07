@@ -45,7 +45,7 @@ function getLabelObj(str) {
       owner,
       repo,
       issue_number: issueNumber,
-      labels: defaultLabels,
+      labels,
     });
   } catch (error) {
     core.setFailed(error.message);
