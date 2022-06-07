@@ -1,10 +1,9 @@
 name: 'Add Label'
 description: 'Add a label when someone raise a PR with a given base branch'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  labels:
+    description: "Labels to add"
     required: true
-    default: '1000'
 outputs:
   time: # output will be available to future steps
     description: 'The current time after waiting'
