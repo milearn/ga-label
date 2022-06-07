@@ -8890,7 +8890,7 @@ const { getOctokit, context } = __nccwpck_require__(5438);
       owner,
       repo,
       issue_number: issueNumber,
-      defaultLabels,
+      labels: defaultLabels,
     });
   } catch (error) {
     core.setFailed(error.message);

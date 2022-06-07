@@ -28,7 +28,7 @@ const { getOctokit, context } = require("@actions/github");
       owner,
       repo,
       issue_number: issueNumber,
-      defaultLabels,
+      labels: defaultLabels,
     });
   } catch (error) {
     core.setFailed(error.message);
